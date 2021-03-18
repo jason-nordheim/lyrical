@@ -1,17 +1,17 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { getTopTracks } from "./util/MusicMatchApi";
 
-const Context = createContext();
+export const Context = createContext();
 
 export const Provider = (props) => {
   const [state, setState] = useState({
-    track_list: [
-      { track: { track_name: "abc" } },
-      { track: { track_name: "123" } },
-    ],
+    track_list: [],
     heading: "Top 10 Tracks",
   });
 
+  useEffect(() => {
+    getTopTracks();
+  }, []);
+
   return <Context.Provider value={state}>{props.children}</Context.Provider>;
 };
-
-export const Consumer = Context.Consumer;

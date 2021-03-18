@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { Consumer } from "../../context";
+import { Context } from "../../context";
 const Tracks = () => {
-  const context = useContext(Consumer);
+  const context = useContext(Context);
   console.log(context);
   return <>Tracks Component</>;
 };
